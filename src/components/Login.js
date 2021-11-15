@@ -1,6 +1,6 @@
 import React, { useRef, useState } from "react";
 import { Form, Button, Card, Alert } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 import "../styles/front.css";
 
@@ -11,6 +11,7 @@ function Login() {
   const {login} = useAuth();
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
 
   async function handleSubmit(event) {
     
@@ -20,6 +21,7 @@ function Login() {
       setError('');
       setLoading(true);
       await login(emailRef.current.value, passwordRef.current.value);
+      navigate("/");
     } catch {
       setError('Failed to sign in');
     }
@@ -46,7 +48,7 @@ function Login() {
             </Form.Group>
 
             <Button disabled={loading} className="w-100" type="submit" id="submit">
-              Sign Up
+              Log In
             </Button>
           </Form>
         </Card.Body>
