@@ -1,0 +1,35 @@
+
+* {
+    padding: 0;
+    margin: 0;
+  }
+  
+  /* .bg {
+    height: 100vh;
+    width: 100%;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: absolute;
+  } */
+  
+  #signup-card {
+    background-color: rgb(105, 105, 105);
+    color: white;
+    opacity: 0.95;
+  }
+  
+  #submit {
+    color: yellow;
+    background-color: red;
+    margin-top: 15px;
+  }
+  
+  #submit:hover {
+    background-color: yellow;
+    color: red;
+  }
+  
+  #login-text {
+    color: yellow;
+  }
