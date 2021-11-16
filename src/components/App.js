@@ -9,6 +9,7 @@ import { AuthProvider } from "../context/AuthContext";
 import {BrowserRouter as Router, Routes, Route} from "react-router-dom";
 import PrivateRoute from './PrivateRoute';
 import ForgotPassword from "./ForgotPassword";
+import UpdateProfile from "./UpdateProfile";
 
 
 function App() {
@@ -29,7 +30,7 @@ function App() {
           <Router>
             <AuthProvider>
               <Routes>
-                {/* <PrivateRoute exact path="/" element = {<Dashboard />} /> */}
+                
                 <Route exact path="/"
                   element={
                     <PrivateRoute>
@@ -37,6 +38,15 @@ function App() {
                     </PrivateRoute>
                   }
                 />
+
+                <Route path="/update-profile"
+                  element={
+                    <PrivateRoute>
+                      <UpdateProfile />
+                    </PrivateRoute>
+                  }
+                />
+
                 <Route path="/signup" element = {<SignUp />} />
                 <Route path="/login" element = {<Login />}/>
                 <Route path="/forgot-password" element = {<ForgotPassword />}/>
