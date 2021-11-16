@@ -36,6 +36,7 @@ function Login() {
         <Card.Body>
           <h2 className="text-center mt-4">Log In</h2>
           {error && <Alert variant="danger">{error}</Alert>}
+          
           <Form onSubmit={handleSubmit}>
             <Form.Group id="email">
               <Form.Label>Email</Form.Label>
@@ -51,9 +52,14 @@ function Login() {
               Log In
             </Button>
           </Form>
+
+          <div className="w-100 text-center mt-2" id="login-text">
+            <Link to="/forgot-password" className>Forgot Password?</Link>
+          </div>
+
         </Card.Body>
       </Card>
-      <div className="w-100 text-center mt-2" id="login-text">
+      <div className="w-100 text-center mt-3" id="login-text">
         Need an account? <Link to="/signup">Sign Up</Link>
       </div>
     </div>
