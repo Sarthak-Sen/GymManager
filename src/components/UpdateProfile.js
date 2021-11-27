@@ -14,7 +14,7 @@ function UpdateProfile() {
   const mobileRef = useRef();
   const aadharRef = useRef();
 
-  const {currentUser, updateAge } = useAuth();
+  const {currentUser, updateName, updateAge, updateHeight, updateWeight, updateMobile, updateAadhar } = useAuth();
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
@@ -29,9 +29,29 @@ function UpdateProfile() {
     const promises = [];
 
 
+    if(nameRef.current.value !== currentUser.name) {
+      promises.push(updateName(nameRef.current.value))
+    }
+
     if(ageRef.current.value !== currentUser.age) {
       promises.push(updateAge(ageRef.current.value))
-  }
+    }
+
+    if(heightRef.current.value !== currentUser.height) {
+      promises.push(updateHeight(heightRef.current.value))
+    }
+
+    if(weightRef.current.value !== currentUser.weight) {
+      promises.push(updateWeight(weightRef.current.value))
+    }
+
+    if(mobileRef.current.value !== currentUser.mobile) {
+      promises.push(updateMobile(mobileRef.current.value))
+    }
+
+    if(aadharRef.current.value !== currentUser.aadhar) {
+      promises.push(updateAadhar(aadharRef.current.value))
+    }
 
     Promise.all(promises).then(() => {
         navigate("/");
@@ -51,20 +71,6 @@ function UpdateProfile() {
           {error && <Alert variant="danger">{error}</Alert>}
           <Form onSubmit={handleSubmit}>
 
-            {/* <Form.Group id="email">
-              <Form.Label>Email</Form.Label>
-              <Form.Control type="email" ref={emailRef} required defaultValue={currentUser.email} />
-            </Form.Group>
-
-            <Form.Group id="password">
-              <Form.Label>Password</Form.Label>
-              <Form.Control type="password" ref={passwordRef} placeholder="Leave Blank to keep the same" />
-            </Form.Group>
-
-            <Form.Group id="password-confirm">
-              <Form.Label>Password Confirmation</Form.Label>
-              <Form.Control type="password" ref={passwordConfirmRef} placeholder="Leave Blank to keep the same"/>
-            </Form.Group> */}
 
             <Form.Group id="age">
               <Form.Label>Age</Form.Label>
@@ -72,7 +78,7 @@ function UpdateProfile() {
             </Form.Group>
 
 
-            {/* <Form.Group id="name">
+            <Form.Group id="name">
               <Form.Label>Name</Form.Label>
               <Form.Control type="name" ref={nameRef}/>
             </Form.Group>
@@ -97,7 +103,7 @@ function UpdateProfile() {
             <Form.Group id="aadhar">
               <Form.Label>Aadhar</Form.Label>
               <Form.Control type="aadhar" ref={aadharRef} />
-            </Form.Group> */}
+            </Form.Group>
 
 
             <Button disabled={loading} className="w-100" type="submit" id="submit">

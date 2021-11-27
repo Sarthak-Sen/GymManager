@@ -23,46 +23,56 @@ export function AuthProvider({children}) {
     }
 
 
-    // function updateName(name){
-    //     return currentUser.updateName(name);
-    // }
-
-    function updateAge(Age){
-        // return currentUser.updateAge(age);
-
-        // var Age = document.getElementById('age').value;
-        
-        // var updates = {
-        //     currentUser.uid.age = Age,
-        // }
-
-        // currentUser.child()
-
-        // database.ref(`/profiles/${currentUser.uid}`).update(age);
+    function updateName(name){
 
         const updateRef = database.ref(`/profiles/${currentUser.uid}`);
 
         updateRef.update({
-            age: Age,
+            name: name,
+        });
+    }
+
+    function updateAge(age){
+        
+        const updateRef = database.ref(`/profiles/${currentUser.uid}`);
+
+        updateRef.update({
+            age: age,
         });
 
     }
 
-    // function updateHeight(height){
-    //     return currentUser.updateHeight(height);
-    // }
+    function updateHeight(height){
+        const updateRef = database.ref(`/profiles/${currentUser.uid}`);
 
-    // function updateWeight(weight){
-    //     return currentUser.updateWeight(weight);
-    // }
+        updateRef.update({
+            height: height,
+        });
+    }
 
-    // function updateMobile(mobile){
-    //     return currentUser.updateMobile(mobile);
-    // }
+    function updateWeight(weight){
+        const updateRef = database.ref(`/profiles/${currentUser.uid}`);
 
-    // function updateAadhar(aadhar){
-    //     return currentUser.updateAadhar(aadhar);
-    // }
+        updateRef.update({
+            weight: weight,
+        });
+    }
+
+    function updateMobile(mobile){
+        const updateRef = database.ref(`/profiles/${currentUser.uid}`);
+
+        updateRef.update({
+            mobile: mobile,
+        });
+    }
+
+    function updateAadhar(aadhar){
+        const updateRef = database.ref(`/profiles/${currentUser.uid}`);
+
+        updateRef.update({
+            aadhar: aadhar,
+        });
+    }
 
     useEffect(()=>{
         const unsubscribe = auth.onAuthStateChanged(user => {
@@ -74,8 +84,7 @@ export function AuthProvider({children}) {
     }, []);
     
 
-    const value = {currentUser, signin, logout, updateAge// updateName, , updateHeight, updateWeight, updateMobile, updateAadhar
-    }
+    const value = {currentUser, signin, logout, updateAge, updateName, updateHeight, updateWeight, updateMobile, updateAadhar }
 
     return (
         <AuthContext.Provider value={value}>

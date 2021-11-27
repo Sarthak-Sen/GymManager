@@ -14,7 +14,7 @@ function Dashboard() {
     
     var user_ref = database.ref(`/profiles/${currentUser.uid}`);
     
-    user_ref.on('value', function(snapshot) {
+    user_ref.on('value', (snapshot) => {
         
         var data = snapshot.val();
         
@@ -27,20 +27,8 @@ function Dashboard() {
         currentUser.height = data.height;
         
     })
-    
+
     console.log('currentUser', currentUser.name)
-    
-    
-
-    // useEffect(() => {
-    //     effect
-    //     return () => {
-    //         cleanup
-    //     }
-    // }, [])
-
-
-   
 
 
     async function handleLogout(){
