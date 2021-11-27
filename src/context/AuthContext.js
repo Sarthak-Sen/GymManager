@@ -1,5 +1,6 @@
 import React, {useContext, useState, useEffect} from 'react'
-import { auth } from '../firebase'
+import firebase from '@firebase/app-compat';
+import { auth, database } from '../firebase'
 
 const AuthContext = React.createContext();
 
@@ -13,29 +14,55 @@ export function AuthProvider({children}) {
     const [loading, setLoading] = useState(true);
 
 
-    function signup(email, password) {
-        return auth.createUserWithEmailAndPassword(email, password);
-    }
-
-    function login(email, password) {
-        return auth.signInWithEmailAndPassword(email, password);
+    function signin() {
+        return auth.signInWithPopup(new firebase.auth.GoogleAuthProvider())
     }
 
     function logout(){
         return auth.signOut();
     }
 
-    function resetPassword(email){
-        return auth.sendPasswordResetEmail(email);
+
+    // function updateName(name){
+    //     return currentUser.updateName(name);
+    // }
+
+    function updateAge(Age){
+        // return currentUser.updateAge(age);
+
+        // var Age = document.getElementById('age').value;
+        
+        // var updates = {
+        //     currentUser.uid.age = Age,
+        // }
+
+        // currentUser.child()
+
+        // database.ref(`/profiles/${currentUser.uid}`).update(age);
+
+        const updateRef = database.ref(`/profiles/${currentUser.uid}`);
+
+        updateRef.update({
+            age: Age,
+        });
+
     }
 
-    function updateEmail(email){
-        return currentUser.updateEmail(email);
-    }
+    // function updateHeight(height){
+    //     return currentUser.updateHeight(height);
+    // }
 
-    function updatePassword(password){
-        return currentUser.updatePassword(password);
-    }
+    // function updateWeight(weight){
+    //     return currentUser.updateWeight(weight);
+    // }
+
+    // function updateMobile(mobile){
+    //     return currentUser.updateMobile(mobile);
+    // }
+
+    // function updateAadhar(aadhar){
+    //     return currentUser.updateAadhar(aadhar);
+    // }
 
     useEffect(()=>{
         const unsubscribe = auth.onAuthStateChanged(user => {
@@ -47,7 +74,8 @@ export function AuthProvider({children}) {
     }, []);
     
 
-    const value = {currentUser, login, signup, logout, resetPassword, updateEmail, updatePassword}
+    const value = {currentUser, signin, logout, updateAge// updateName, , updateHeight, updateWeight, updateMobile, updateAadhar
+    }
 
     return (
         <AuthContext.Provider value={value}>

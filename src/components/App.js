@@ -2,14 +2,12 @@ import React from "react";
 import bgImg from "../images/background.jpg";
 import "../styles/front.css";
 import { Container } from "react-bootstrap";
-import SignUp from "./SignUp";
 import Dashboard from "./Dashboard"
-import Login from "./Login";
 import { AuthProvider } from "../context/AuthContext";
 import {BrowserRouter as Router, Routes, Route} from "react-router-dom";
 import PrivateRoute from './PrivateRoute';
-import ForgotPassword from "./ForgotPassword";
 import UpdateProfile from "./UpdateProfile";
+import SignIn from "./SignIn";
 
 
 function App() {
@@ -47,9 +45,7 @@ function App() {
                   }
                 />
 
-                <Route path="/signup" element = {<SignUp />} />
-                <Route path="/login" element = {<Login />}/>
-                <Route path="/forgot-password" element = {<ForgotPassword />}/>
+                <Route path="/signin" element = {<SignIn />} />
 
               </Routes>
             </AuthProvider> 
