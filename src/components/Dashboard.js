@@ -1,12 +1,13 @@
 import React, {useState} from 'react';
 import {Card, Button, Alert} from 'react-bootstrap';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate, Navigate } from 'react-router-dom';
 import {useAuth} from "../context/AuthContext";
 import { database } from '../firebase';
 
 function Dashboard() {
 
     const [error, setError] = useState("");
+
     const {currentUser, logout} = useAuth();
     const navigate = useNavigate();
     
@@ -25,11 +26,15 @@ function Dashboard() {
         currentUser.mobile = data.mobile;
         currentUser.weight = data.weight;
         currentUser.height = data.height;
+        currentUser.admin = data.admin;
         
     })
 
     console.log('currentUser', currentUser.name)
 
+    console.log('currentUser', currentUser.admin)
+
+    // currentUser.admin ? setIsAdmin(true) : setIsAdmin(false)
 
     async function handleLogout(){
         setError('');
@@ -45,6 +50,7 @@ function Dashboard() {
 
     return (
         <>
+            {currentUser.admin ? <Navigate to="/admin" />: 
             <Card>
                 <Card.Body>
                     <h2 className="text-center mt-4">Profile</h2>
@@ -57,10 +63,11 @@ function Dashboard() {
                     <Link to="/update-profile" className="btn btn-primary w-100 mt-3">Update Profile</Link>
                 </Card.Body>
             </Card>
-
+        }
             <div className="w-100 text-center mt-2" id="login-text">
                 <Button variant="link" onClick={handleLogout}>Log Out</Button>
             </div>
+            
         </>
     )
 }

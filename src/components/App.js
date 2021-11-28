@@ -3,14 +3,23 @@ import bgImg from "../images/background.jpg";
 import "../styles/front.css";
 import { Container } from "react-bootstrap";
 import Dashboard from "./Dashboard"
-import { AuthProvider } from "../context/AuthContext";
+import { AuthProvider} from "../context/AuthContext";
 import {BrowserRouter as Router, Routes, Route} from "react-router-dom";
 import PrivateRoute from './PrivateRoute';
 import UpdateProfile from "./UpdateProfile";
 import SignIn from "./SignIn";
+import AdminPanel from "./AdminPanel";
+// import { database } from "../firebase";
 
 
 function App() {
+
+  // const [isAdmin, setIsAdmin] = useState(false);
+
+
+  // {database.ref(`/profiles/${currentUser.uid}`/isAdmin) === true ? setIsAdmin(true) : setIsAdmin(false) }
+
+
   return (
     <div
       style={{
@@ -29,6 +38,7 @@ function App() {
             <AuthProvider>
               <Routes>
                 
+                
                 <Route exact path="/"
                   element={
                     <PrivateRoute>
@@ -41,6 +51,14 @@ function App() {
                   element={
                     <PrivateRoute>
                       <UpdateProfile />
+                    </PrivateRoute>
+                  }
+                />
+
+                <Route path="/admin"
+                  element={
+                    <PrivateRoute>
+                      <AdminPanel />
                     </PrivateRoute>
                   }
                 />

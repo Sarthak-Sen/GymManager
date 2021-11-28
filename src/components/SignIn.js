@@ -35,7 +35,8 @@ function SignIn() {
           weight: "60",
           height: "160",
           mobile: "9999999999",
-          aadhar: "1234-1234-1234"
+          aadhar: "1234-1234-1234",
+          admin: false,
         })
       }
 
