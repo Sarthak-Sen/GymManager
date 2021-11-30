@@ -14,6 +14,7 @@ export function AuthProvider({children}) {
     const [loading, setLoading] = useState(true);
 
 
+
     function signin() {
         return auth.signInWithPopup(new firebase.auth.GoogleAuthProvider())
     }

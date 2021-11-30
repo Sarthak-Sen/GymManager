@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, {useEffect, useState} from 'react'
 import {Button, Alert} from 'react-bootstrap';
 import {useAuth} from "../context/AuthContext";
 import {useNavigate} from 'react-router-dom'
@@ -10,6 +10,12 @@ function AdminPanel() {
     const [error, setError] = useState("");
     const navigate = useNavigate();
 
+    // useEffect(() => {
+    //     effect
+    //     return () => {
+    //         cleanup
+    //     }
+    // }, [])
 
 
     async function handleLogout(){
@@ -25,8 +31,8 @@ function AdminPanel() {
 
 
     return (
-        <div>
-            Panel
+        <>
+            <h1>{currentUser.age}</h1>
 
 
             {error && <Alert variant="danger">{error}</Alert>}
@@ -35,7 +41,7 @@ function AdminPanel() {
             <div className="w-100 text-center mt-2" id="login-text">
                 <Button variant="link" onClick={handleLogout}>Log Out</Button>
             </div>
-        </div>
+        </>
     )
 }
 

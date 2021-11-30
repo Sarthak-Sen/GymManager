@@ -72,37 +72,36 @@ function UpdateProfile() {
           <Form onSubmit={handleSubmit}>
 
 
-            <Form.Group id="age">
-              <Form.Label>Age</Form.Label>
-              <Form.Control type="age" ref={ageRef} />
-            </Form.Group>
-
-
             <Form.Group id="name">
               <Form.Label>Name</Form.Label>
-              <Form.Control type="name" ref={nameRef}/>
+              <Form.Control type="name" ref={nameRef} defaultValue={currentUser.name} />
             </Form.Group>
 
+
+            <Form.Group id="age">
+              <Form.Label>Age</Form.Label>
+              <Form.Control type="age" ref={ageRef} defaultValue={currentUser.age}/>
+            </Form.Group>
             
 
             <Form.Group id="height">
               <Form.Label>Height</Form.Label>
-              <Form.Control type="height" ref={heightRef} />
+              <Form.Control type="height" ref={heightRef} defaultValue={currentUser.height}/>
             </Form.Group>
 
             <Form.Group id="weight">
               <Form.Label>Weight</Form.Label>
-              <Form.Control type="weight" ref={weightRef} />
+              <Form.Control type="weight" ref={weightRef} defaultValue={currentUser.weight}/>
             </Form.Group>
 
             <Form.Group id="mobile">
               <Form.Label>Mobile</Form.Label>
-              <Form.Control type="mobile" ref={mobileRef} />
+              <Form.Control type="mobile" ref={mobileRef} defaultValue={currentUser.mobile}/>
             </Form.Group>
 
             <Form.Group id="aadhar">
               <Form.Label>Aadhar</Form.Label>
-              <Form.Control type="aadhar" ref={aadharRef} />
+              <Form.Control type="aadhar" ref={aadharRef} defaultValue={currentUser.aadhar}/>
             </Form.Group>
 
 
