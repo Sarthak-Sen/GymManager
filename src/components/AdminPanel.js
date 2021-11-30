@@ -1,21 +1,42 @@
 import React, {useEffect, useState} from 'react'
-import {Button, Alert} from 'react-bootstrap';
+import {Button, Alert, Form} from 'react-bootstrap';
 import {useAuth} from "../context/AuthContext";
 import {useNavigate} from 'react-router-dom'
+// import { auth, database } from '../firebase'
+import firebase from '@firebase/app-compat';
+import "../styles/admin.css";
 
 
 
 function AdminPanel() {
     const {currentUser, logout} = useAuth();
     const [error, setError] = useState("");
+    const [profileList, setProfileList] = useState();
+   
     const navigate = useNavigate();
 
-    // useEffect(() => {
-    //     effect
-    //     return () => {
-    //         cleanup
-    //     }
-    // }, [])
+    var text1 = "Damn!"
+
+    useEffect(() => {
+        const profileRef = firebase.database().ref('profiles');
+        profileRef.on('value', (snapshot) => {
+            const profiles = snapshot.val();
+            const profileList = [];
+            for(let uid in profiles){
+                profileList.push(profiles[uid]);
+                console.log('uid', uid)
+            }
+            console.log('here?')
+            setProfileList(profileList);
+            console.log('profiles', profileList);
+        });
+        // return () => {
+        //     // cleanup
+        // }
+    }, []);
+
+    console.log('profiles', profileList);
+    console.log('current', currentUser.uid);
 
 
     async function handleLogout(){
@@ -32,14 +53,32 @@ function AdminPanel() {
 
     return (
         <>
-            <h1>{currentUser.age}</h1>
 
 
             {error && <Alert variant="danger">{error}</Alert>}
 
+            <h1 className="admin-name">Welcome ADMIN : <br /> {currentUser.name}</h1>
 
-            <div className="w-100 text-center mt-2" id="login-text">
-                <Button variant="link" onClick={handleLogout}>Log Out</Button>
+            <div id="profileList" className="col-sm-2">
+            <Button variant="outline-primary" className="btn">Sarthak Sen</Button> <br />
+            <Button variant="outline-primary" className="btn">Amrit Shukla</Button> <br />
+            <Button variant="outline-primary" className="btn">Maaz</Button> <br />
+            <Button variant="outline-primary" className="btn">Aditya</Button> <br />
+            <Button variant="outline-primary" className="btn">Nikhil</Button> <br />
+            
+            <Button variant="outline-danger" onClick={handleLogout} className="btn" id="logout">Log Out</Button>
+            </div>
+
+            <div id="message" className="col-sm-10">
+            <Form id="form">
+
+                <Form.Group className="col-sm-5" controlId="exampleForm.ControlTextarea1">
+                    <Form.Label>Example textarea</Form.Label>
+                    <Form.Control as="textarea" rows={20} defaultValue={text1} />
+                </Form.Group>
+            </Form>
+
+
             </div>
         </>
     )

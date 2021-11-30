@@ -1,0 +1,36 @@
+.admin-name{
+    color: white;
+    position: absolute;
+    left: 10px;
+    top: 30px;
+}
+
+
+#profileList{
+    position: absolute;
+    left: 10px;
+    /* display: flex; */
+    justify-content: space-around;
+    top: 150px;
+
+} 
+
+.btn{
+    color: black;
+    background-color: yellow;
+    size: 5px;
+    width: 100%;
+    margin: 5px;
+}
+
+#form{
+    position: absolute;
+    top: 70px;
+    left: 300px;
+    width: 1000px;
+}
+
+#logout{
+    position: absolute;
+    top: 400px;
+}
