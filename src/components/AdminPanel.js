@@ -39,17 +39,6 @@ function AdminPanel() {
     console.log('profiles', profileList);
     console.log('current', currentUser.uid);
 
-    var da = [];
-
-
-    // amrit(){
-
-    // }
-
-    // maaz(){
-
-    // }
-// 
 
     async function handleLogout(){
         setError('');
