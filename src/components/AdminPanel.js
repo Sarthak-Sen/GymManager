@@ -5,7 +5,7 @@ import {useNavigate} from 'react-router-dom'
 // import { auth, database } from '../firebase'
 import firebase from '@firebase/app-compat';
 import "../styles/admin.css";
-
+import Chart from './Chart';
 
 
 function AdminPanel() {
@@ -61,10 +61,8 @@ function AdminPanel() {
 
             <div id="profileList" className="col-sm-2">
             <Button variant="outline-primary" className="btn">Sarthak Sen</Button> <br />
-            <Button variant="outline-primary" className="btn">Amrit Shukla</Button> <br />
+            <Button variant="outline-primary" className="btn">Amrit</Button> <br />
             <Button variant="outline-primary" className="btn">Maaz</Button> <br />
-            <Button variant="outline-primary" className="btn">Aditya</Button> <br />
-            <Button variant="outline-primary" className="btn">Nikhil</Button> <br />
             
             <Button variant="outline-danger" onClick={handleLogout} className="btn" id="logout">Log Out</Button>
             </div>
@@ -77,6 +75,8 @@ function AdminPanel() {
                     <Form.Control as="textarea" rows={20} defaultValue={text1} />
                 </Form.Group>
             </Form>
+
+            <Chart />
 
 
             </div>

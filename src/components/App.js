@@ -22,12 +22,12 @@ function App() {
 
   return (
     <div
-      style={{
-        backgroundImage: `url(${bgImg})`,
-        width: "100%",
-        backgroundPosition: "center",
-        backgroundSize: "cover",
-      }}
+      // style={{
+      //   backgroundImage: `url(${bgImg})`,
+      //   width: "100%",
+      //   backgroundPosition: "center",
+      //   backgroundSize: "cover",
+      // }}
     >
         <Container
         className="d-flex align-items-center justify-content-center"
