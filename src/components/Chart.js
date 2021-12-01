@@ -3,38 +3,68 @@ import { Line } from 'react-chartjs-2'
 import { Chart as ChartJS } from 'chart.js/auto'
 import { Chart }            from 'react-chartjs-2'
 
+import "../styles/admin.css";
 
 
 
 function ChartPlot() {
     return (
         <div>
-            <Line 
+          <Line id="chart"
             data={{
-                labels: ['hi', '2'],
-                datasets: [
-                    {
-
-                        Label: 'Weights',
-                        data: [82, 43, 102, 67, 99],
-                        backgroundColor: ['red']
-                    }
-
-
-                ]
+              labels: ['1', '2', '3', '4', '5', '6'],
+              datasets: [
+                {
+                  label: 'Weight',
+                  data: [82, 91, 90, 87, 85, 87, 82],
+                  backgroundColor: [
+                    'rgba(255, 99, 132, 0.2)',
+                    'rgba(54, 162, 235, 0.2)',
+                    'rgba(255, 206, 86, 0.2)',
+                    'rgba(75, 192, 192, 0.2)',
+                    'rgba(153, 102, 255, 0.2)',
+                    'rgba(255, 159, 64, 0.2)',
+                    
+                  ],
+                  borderColor: [
+                    'rgba(255, 99, 132, 1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(255, 206, 86, 1)',
+                    'rgba(75, 192, 192, 1)',
+                    'rgba(153, 102, 255, 1)',
+                    'rgba(255, 159, 64, 1)',
+                  ],
+                  borderWidth: 1,
+                },
+                // {
+                //   label: 'Quantity',
+                //   data: [47, 52, 67, 58, 9, 50],
+                //   backgroundColor: 'orange',
+                //   borderColor: 'red',
+                // },
+              ],
             }}
-
-            height = {480}
-            width = {1000}
-
+            height={400}
+            width={600}
             options={{
-                maintainAspectRatio : false,
+              maintainAspectRatio: false,
+              scales: {
+                yAxes: [
+                  {
+                    ticks: {
+                      beginAtZero: true,
+                    },
+                  },
+                ],
+              },
+              legend: {
+                labels: {
+                  fontSize: 25,
+                },
+              },
             }}
-
-
-            />
+          />
         </div>
-    )
-}
-
+      )
+    }
 export default ChartPlot

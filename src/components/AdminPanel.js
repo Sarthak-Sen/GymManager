@@ -6,6 +6,7 @@ import {useNavigate} from 'react-router-dom'
 import firebase from '@firebase/app-compat';
 import "../styles/admin.css";
 import Chart from './Chart';
+// import {AiOutlineSend} from 'react-icons/fa';
 
 
 function AdminPanel() {
@@ -15,7 +16,7 @@ function AdminPanel() {
    
     const navigate = useNavigate();
 
-    var text1 = "Damn!"
+                                                                                                         var text1 = "Meal 1: One glass lemon, honey in water water ;; Meal 2: 300 gms of a fruits"
 
     useEffect(() => {
         const profileRef = firebase.database().ref('profiles');
@@ -38,6 +39,17 @@ function AdminPanel() {
     console.log('profiles', profileList);
     console.log('current', currentUser.uid);
 
+    var da = [];
+
+
+    // amrit(){
+
+    // }
+
+    // maaz(){
+
+    // }
+// 
 
     async function handleLogout(){
         setError('');
@@ -75,8 +87,11 @@ function AdminPanel() {
                     <Form.Control as="textarea" rows={20} defaultValue={text1} />
                 </Form.Group>
             </Form>
+            {/* <AiOutlineSend /> */}
+            
 
             <Chart />
+            
 
 
             </div>

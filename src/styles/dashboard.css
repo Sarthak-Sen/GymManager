@@ -1,0 +1,47 @@
+html {
+    overflow: hidden;
+    height: 100%;
+}
+
+body {
+    height: 100%;
+    overflow: auto;
+}
+
+
+#card{
+    position: absolute;
+    left: 10px;
+    display: flex;
+    justify-content: space-around;
+    top: 150px;
+}
+
+
+#form{
+    position: absolute;
+    top: 70px;
+    left: 400px;
+    width: 2000px;
+    bottom: 100px;
+}
+
+#logout-text{
+    color: black;
+    background-color: yellow;
+    width: 20px;
+    size: 5px;
+    margin: 5px;
+    left: 10px;
+    top: 500px;
+}
+
+
+.btn{
+    color: black;
+    background-color: yellow;
+    size: 5px;
+    width: 20px;
+    margin: 5px;
+    left: 10px;
+}

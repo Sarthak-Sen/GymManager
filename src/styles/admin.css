@@ -1,4 +1,14 @@
-/* .admin-name{
+html {
+    overflow: hidden;
+    height: 100%;
+}
+
+body {
+    height: 100%;
+    overflow: auto;
+}
+
+.admin-name{
     color: white;
     position: absolute;
     left: 10px;
@@ -9,8 +19,8 @@
 #profileList{
     position: absolute;
     left: 10px;
-    /* display: flex; */
-    /* justify-content: space-around;
+    display: flex;
+     /* justify-content: space-around; */
     top: 150px;
 
 } 
@@ -26,11 +36,18 @@
 #form{
     position: absolute;
     top: 70px;
-    left: 300px;
-    width: 1000px;
+    left: 400px;
+    width: 2000px;
+    bottom: 100px;
 }
 
 #logout{
     position: absolute;
     top: 400px;
-}  */
+} 
+
+#chart{
+    left:800px;
+    top: 400px;
+    position: absolute;
+}
